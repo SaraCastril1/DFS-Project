@@ -1,26 +1,17 @@
 from flask import Flask
 import os
-#import pika
+from dotenv import dotenv_values
 import grpc
 import file_pb2
 import file_pb2_grpc
 
 
 app = Flask(__name__)
+config = dotenv_values("../.env")
 
-#PRODUCER_HOST = '3.209.30.241'
-PRODUCER_HOST = 'localhost'
-PRODUCER_PORT = 50051
+PRODUCER_HOST = config['PRODUCER_HOST']
+PRODUCER_PORT = config['PRODUCER_PORT']
 
-# rabbitMQ-----------------------------------------------------------------
-# def rabbitMQ(method, path):
-    
-#     connection = pika.BlockingConnection(pika.ConnectionParameters('54.85.196.208', 5672, '/', pika.PlainCredentials('user', 'password')))
-#     channel = connection.channel()
-#     channel.basic_publish(exchange='my_exchange', routing_key='', body= method+"/"+path )
-#     connection.close()
-
-# gRPC ------------------------------------------------------------------
 
 def find_file(pattern):
     try:

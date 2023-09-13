@@ -1,4 +1,5 @@
 from concurrent import futures
+from dotenv import dotenv_values
 
 import os
 import grpc
@@ -6,8 +7,9 @@ import fnmatch
 import file_pb2
 import file_pb2_grpc
 #CONSUMER
+config = dotenv_values("../.env")
 
-HOST = '[::]:50051'
+HOST = config['HOST']
 
 
 
