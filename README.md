@@ -9,7 +9,7 @@ Edwin Nelson Montoya Múnera - emontoya@eafit.edu.co
 #
 # Sistema de archivos distribuidos:
 
-Acceda al marco teoríco en el siguiente link -> 
+Acceda al marco teoríco en el siguiente link -> Informe.pdf
 
 
 
