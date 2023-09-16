@@ -3,6 +3,7 @@
 ## Estudiante(s): 
 - Simon Gomez Arango - sgomez13@eafit.edu.co
 - Sara María Castrillón Ríos - smcastril1@eafit.edu.co
+- Manuela Tolosa
 #
 ## Profesor: 
 Edwin Nelson Montoya Múnera - emontoya@eafit.edu.co
@@ -17,7 +18,6 @@ Este proyecto, propone un NFS como se describirá más adelante.
 Acceda al marco teoríco en el siguiente link -> Informe.pdf
 
 ## 2. información general de diseño de alto nivel, arquitectura, patrones, mejores prácticas utilizadas:
-![Arquitectura_Telemática drawio](https://github.com/SaraCastril1/DFS-Project/assets/84990901/9a5a4612-4fff-43d6-9a8a-0ce022fd8fea)
 
 ### Componentes:
 
@@ -58,3 +58,4 @@ El canal de datos se utiliza para la transferencia directa de archivos entre el 
 La selección de DataNode inicial para la escritura y lectura puede ser gestionada por el NameNode utilizando un criterio de optimización, como el enfoque de round-robin para equilibrar la carga.
 
 
+![Arquitectura_Telemática drawio](https://github.com/SaraCastril1/DFS-Project/assets/84990901/9a5a4612-4fff-43d6-9a8a-0ce022fd8fea)
