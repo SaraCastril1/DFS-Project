@@ -35,30 +35,25 @@ Los DataNodes son los nodos de almacenamiento reales donde se ubican los archivo
 ### Flujo de operación:
 
 #### Escritura de un archivo:
-
 - El cliente se comunica con el NameNode para solicitar la escritura de un archivo.
 - El NameNode selecciona un DataNode adecuado para la escritura inicial y notifica al cliente.
 - El cliente envía el archivo al DataNode seleccionado.
 - El DataNode seleccionado se convierte en el líder (Leader) del archivo y luego replica el archivo en otro DataNode que actúa como seguidor (Follower) para garantizar la tolerancia a fallos.
   
 #### Lectura de un archivo:
-
 - El cliente se comunica con el NameNode para solicitar la lectura de un archivo.
 - El NameNode selecciona al menos dos DataNode que contienen el archivo para su lectura para la lectura y notifica al cliente.
 - El cliente selecciona uno de los DataNodes y recupera el archivo directamente desde ese DataNode. En caso de fallo, puede intentar recuperar el archivo de otro DataNode.
   
 #### Tolerancia a fallos:
-
 - Si un DataNode falla, el NameNode debe ser capaz de detectarlo y tomar medidas para reemplazar la réplica del archivo en otro DataNode.
 - El DataNode líder (Leader) para un archivo debe asegurarse de que su réplica en el DataNode seguidor (Follower) esté actualizada y lista para asumir el liderazgo en caso de fallo.
 
 #### Canal de Control y Canal de Datos:
-
 El canal de control se utiliza para la comunicación entre el cliente y el NameNode para solicitar información sobre archivos y para la administración general del DFS.
 El canal de datos se utiliza para la transferencia directa de archivos entre el cliente y los DataNodes.
 
 #### Selección de DataNode:
-
 La selección de DataNode inicial para la escritura y lectura puede ser gestionada por el NameNode utilizando un criterio de optimización, como el enfoque de round-robin para equilibrar la carga.
 
 
