@@ -17,6 +17,7 @@ Este proyecto, propone un NFS como se describirá más adelante.
 Acceda al marco teoríco en el siguiente link -> Informe.pdf
 
 ## 2. información general de diseño de alto nivel, arquitectura, patrones, mejores prácticas utilizadas:
+Arquitectura_Telemática.drawio.png
 
 ### Componentes:
 
