@@ -3,7 +3,7 @@
 ## Estudiante(s): 
 - Simon Gomez Arango - sgomez13@eafit.edu.co
 - Sara María Castrillón Ríos - smcastril1@eafit.edu.co
-- Manuela Tolosa
+- Manuela Tolosa - mtolosag@eafit.edu.co
 #
 ## Profesor: 
 Edwin Nelson Montoya Múnera - emontoya@eafit.edu.co
