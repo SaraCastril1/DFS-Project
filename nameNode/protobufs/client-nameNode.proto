@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+//Crear archivos-> Escribir-----------------------------------------------------------
+
+message CreateFileRequest {
+  string filename = 1;
+}
+
+message CreateFileResponse {
+  string message = 1;
+  //Ruta de la carpeta
+}
+
+//Open para lectura y escritura -> LEER -----------------------------------------------------------
+message OpenFileRequest {
+	string filename = 1;
+}
+  
+message OpenFileResponse {
+	string file_id = 1;
+	//repeated string data_node_addresses = 2;
+	// Otros detalles sobre el archivo, como metadatos.
+}
+
+//Listar -----------------------------------------------------------
+message ListFilesRequest {
+	// fitrado de búsqueda -> NameNode
+}
+  
+message ListFilesResponse {
+	repeated string filenames = 1;
+}
+
+//Borrar archivos NO ESCENCIAL-----------------------------------------------------------
+
+message DeleteFileRequest {
+	string filename = 1;
+  }
+  
+message DeleteFileResponse {
+	string file_id = 1;
+	repeated string data_node_addresses = 2;
+	// Otros detalles sobre el archivo, como metadatos.
+}
+
+
+
+service NameNodeService {
+	rpc CreateFile(CreateFileRequest) returns (CreateFileResponse);
+	rpc OpenFile(OpenFileRequest) returns (OpenFileResponse);
+  	rpc ListFiles(ListFilesRequest) returns (ListFilesResponse);
+	rpc DeleteFile(DeleteFilesRequest) returns (DeleteFilesResponse);
+
+}

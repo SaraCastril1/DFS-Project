@@ -4,9 +4,13 @@
 - Simon Gomez Arango - sgomez13@eafit.edu.co
 - Sara María Castrillón Ríos - smcastril1@eafit.edu.co
 - Manuela Tolosa
+
+
 #
-## Profesor: 
+### Profesor: 
 Edwin Nelson Montoya Múnera - emontoya@eafit.edu.co
+
+
 #
 # Sistema de archivos distribuidos:
 

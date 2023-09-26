@@ -1,0 +1,59 @@
+Fase 1: Definición de Requisitos y Diseño Inicial 
+
+	- Requisitos Funcionales:
+
+		Escritura y Lectura de Archivos: El DFS debe permitir a los usuarios escribir y leer archivos de manera eficiente y confiable, tanto localmente como de 		forma distribuida.
+
+		Replicación de Datos: El sistema debe ser capaz de replicar archivos en múltiples DataNodes para garantizar la tolerancia a fallos y la disponibilidad.
+
+		Tolerancia a Fallos: El sistema debe ser capaz de detectar y recuperarse automáticamente de fallos en los DataNodes o en otros componentes del sistema.
+
+		Gestión de Metadatos: Debe existir una gestión eficiente de metadatos, lo que incluye la gestión de la estructura de directorios y los atributos de 		archivos.
+
+		Control de Acceso: El sistema debe proporcionar un mecanismo de control de acceso para garantizar que solo los usuarios autorizados puedan acceder a 		los archivos.
+
+		Listado de Archivos: Los usuarios deben poder listar los archivos y directorios en el sistema para navegar y buscar archivos.
+
+	- Requisitos No Funcionales:
+
+		Escalabilidad: El sistema debe ser escalable y capaz de manejar un gran volumen de archivos y usuarios.
+
+		Rendimiento: Debe ser eficiente en términos de rendimiento para garantizar una lectura y escritura rápidas de archivos.
+
+		Disponibilidad: El sistema debe estar disponible en todo momento para los usuarios, incluso en presencia de fallos.
+
+		Escritura y Lectura de Archivos: El DFS debe permitir a los usuarios escribir y leer archivos de manera eficiente y confiable, tanto localmente como de 		forma distribuida.
+
+		Replicación de Datos: El sistema debe ser capaz de replicar archivos en múltiples DataNodes para garantizar la tolerancia a fallos y la disponibilidad.
+
+		Tolerancia a Fallos: El sistema debe ser capaz de detectar y recuperarse automáticamente de fallos en los DataNodes o en otros componentes del sistema.
+
+
+Fase 2: Implementación del NameNode 
+
+	- Implementación del NameNode: Inicia la implementación del NameNode, centrándote en la gestión de metadatos y la comunicación con el cliente.
+
+	- Protocolo Cliente-NameNode: Define y crea los archivos proto para las operaciones de comunicación entre el cliente y el NameNode.
+
+
+Fase 3: Implementación de DataNodes y Comunicación Cliente-DataNode 
+
+	- Implementación de DataNodes: Comienza a implementar la lógica de los DataNodes, centrándote en el almacenamiento y la replicación de datos.
+
+	- Protocolo Cliente-DataNode: Define y crea los archivos proto para las operaciones de comunicación entre el cliente y los DataNodes.
+
+Fase 4: Pruebas Iniciales
+
+	- Pruebas de Integración: Realiza pruebas de integración básicas para verificar que el cliente pueda comunicarse con el NameNode y los DataNodes.
+
+	- Pruebas de Escritura y Lectura: Implementa operaciones de escritura y lectura básicas para validar que el sistema pueda almacenar y recuperar archivos.
+
+Fase 5: Réplica de Datos 
+
+	- Implementación de la Réplica: Implementa la lógica necesaria para la replicación de datos entre DataNodes.
+
+	- Pruebas de Tolerancia a Fallos: Realiza pruebas para asegurarte de que el sistema pueda recuperarse de manera adecuada en caso de fallo de un DataNode.
+
+
+Fase 6: Documentación y Entrega:
+
