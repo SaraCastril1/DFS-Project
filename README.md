@@ -60,6 +60,32 @@ La selección de DataNode inicial para la escritura y lectura puede ser gestiona
 
 ![Arquitectura_Telemática drawio](https://github.com/SaraCastril1/DFS-Project/assets/84990901/9a5a4612-4fff-43d6-9a8a-0ce022fd8fea)
 
+### Requisitos Funcionales:
+-Escritura y Lectura de Archivos: El DFS debe permitir a los usuarios escribir y leer archivos de manera eficiente y confiable, tanto localmente como de 		forma distribuida.
+
+-Replicación de Datos: El sistema debe ser capaz de replicar archivos en múltiples DataNodes para garantizar la tolerancia a fallos y la disponibilidad.
+
+-Tolerancia a Fallos: El sistema debe ser capaz de detectar y recuperarse automáticamente de fallos en los DataNodes o en otros componentes del sistema.
+
+-Gestión de Metadatos: Debe existir una gestión eficiente de metadatos, lo que incluye la gestión de la estructura de directorios y los atributos de 		archivos.
+
+-Control de Acceso: El sistema debe proporcionar un mecanismo de control de acceso para garantizar que solo los usuarios autorizados puedan acceder a 		los archivos.
+
+-Listado de Archivos: Los usuarios deben poder listar los archivos y directorios en el sistema para navegar y buscar archivos.
+
+### Requisitos No Funcionales:
+-Escalabilidad: El sistema debe ser escalable y capaz de manejar un gran volumen de archivos y usuarios.
+
+-Rendimiento: Debe ser eficiente en términos de rendimiento para garantizar una lectura y escritura rápidas de archivos.
+
+-Disponibilidad: El sistema debe estar disponible en todo momento para los usuarios, incluso en presencia de fallos.
+
+-Escritura y Lectura de Archivos: El DFS debe permitir a los usuarios escribir y leer archivos de manera eficiente y confiable, tanto localmente como de 		forma distribuida.
+
+-Replicación de Datos: El sistema debe ser capaz de replicar archivos en múltiples DataNodes para garantizar la tolerancia a fallos y la disponibilidad.
+
+-Tolerancia a Fallos: El sistema debe ser capaz de detectar y recuperarse automáticamente de fallos en los DataNodes o en otros componentes del sistema
+
 # 3. Descripción del ambiente de desarrollo y técnico: lenguaje de programación, librerias, paquetes, etc, con sus numeros de versiones.
 
 ## como se compila y ejecuta.
