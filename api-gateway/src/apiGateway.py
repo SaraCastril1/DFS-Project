@@ -2,8 +2,8 @@ from flask import Flask
 import os
 from dotenv import dotenv_values
 import grpc
-import file_pb2
-import file_pb2_grpc
+import  apiGateway_nameNode_pb2_grpc
+import  apiGateway_nameNode_pb2
 
 
 app = Flask(__name__)
@@ -16,8 +16,8 @@ PRODUCER_PORT = config['PRODUCER_PORT']
 def find_file(pattern):
     try:
         with grpc.insecure_channel(f"{PRODUCER_HOST}:{PRODUCER_PORT}") as channel:
-            stub = file_pb2_grpc.FileStub(channel)
-            response = stub.Find_file(file_pb2.file_request(file=pattern))
+            stub = apiGateway_nameNode_pb2_grpc.FileStub(channel)
+            response = stub.Find_file(apiGateway_nameNode_pb2.file_request(file=pattern))
             return response
     except:
         print("ERROR")
@@ -27,8 +27,8 @@ def find_file(pattern):
 def list_files(directory):
     try:
         with grpc.insecure_channel(f"{PRODUCER_HOST}:{PRODUCER_PORT}") as channel:
-            stub = file_pb2_grpc.FileStub(channel)
-            response = stub.List_file(file_pb2.file_request(file=directory))
+            stub = apiGateway_nameNode_pb2_grpc.FileStub(channel)
+            response = stub.List_file(apiGateway_nameNode_pb2.file_request(file=directory))
             return response.file
     except:
         print("ERROR")
