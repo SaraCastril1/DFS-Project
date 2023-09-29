@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import apiGateway_dataNode_pb2 as apiGateway__dataNode__pb2
+import dataNode_apiGateway_pb2 as dataNode__apiGateway__pb2
 
 
 class DataNodeServiceStub(object):
@@ -16,13 +16,13 @@ class DataNodeServiceStub(object):
         """
         self.WriteFile = channel.unary_unary(
                 '/DataNodeService/WriteFile',
-                request_serializer=apiGateway__dataNode__pb2.WriteFileRequestData.SerializeToString,
-                response_deserializer=apiGateway__dataNode__pb2.WriteFileResponseData.FromString,
+                request_serializer=dataNode__apiGateway__pb2.WriteFileRequestData.SerializeToString,
+                response_deserializer=dataNode__apiGateway__pb2.WriteFileResponseData.FromString,
                 )
         self.ReadFile = channel.unary_unary(
                 '/DataNodeService/ReadFile',
-                request_serializer=apiGateway__dataNode__pb2.ReadFileRequestData.SerializeToString,
-                response_deserializer=apiGateway__dataNode__pb2.ReadFileResponseData.FromString,
+                request_serializer=dataNode__apiGateway__pb2.ReadFileRequestData.SerializeToString,
+                response_deserializer=dataNode__apiGateway__pb2.ReadFileResponseData.FromString,
                 )
 
 
@@ -46,13 +46,13 @@ def add_DataNodeServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'WriteFile': grpc.unary_unary_rpc_method_handler(
                     servicer.WriteFile,
-                    request_deserializer=apiGateway__dataNode__pb2.WriteFileRequestData.FromString,
-                    response_serializer=apiGateway__dataNode__pb2.WriteFileResponseData.SerializeToString,
+                    request_deserializer=dataNode__apiGateway__pb2.WriteFileRequestData.FromString,
+                    response_serializer=dataNode__apiGateway__pb2.WriteFileResponseData.SerializeToString,
             ),
             'ReadFile': grpc.unary_unary_rpc_method_handler(
                     servicer.ReadFile,
-                    request_deserializer=apiGateway__dataNode__pb2.ReadFileRequestData.FromString,
-                    response_serializer=apiGateway__dataNode__pb2.ReadFileResponseData.SerializeToString,
+                    request_deserializer=dataNode__apiGateway__pb2.ReadFileRequestData.FromString,
+                    response_serializer=dataNode__apiGateway__pb2.ReadFileResponseData.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -76,8 +76,8 @@ class DataNodeService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/DataNodeService/WriteFile',
-            apiGateway__dataNode__pb2.WriteFileRequestData.SerializeToString,
-            apiGateway__dataNode__pb2.WriteFileResponseData.FromString,
+            dataNode__apiGateway__pb2.WriteFileRequestData.SerializeToString,
+            dataNode__apiGateway__pb2.WriteFileResponseData.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -93,7 +93,7 @@ class DataNodeService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/DataNodeService/ReadFile',
-            apiGateway__dataNode__pb2.ReadFileRequestData.SerializeToString,
-            apiGateway__dataNode__pb2.ReadFileResponseData.FromString,
+            dataNode__apiGateway__pb2.ReadFileRequestData.SerializeToString,
+            dataNode__apiGateway__pb2.ReadFileResponseData.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
