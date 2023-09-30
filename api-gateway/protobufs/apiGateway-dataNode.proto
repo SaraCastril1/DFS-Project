@@ -20,7 +20,7 @@ message ReadFileRequestData{
 	string file_name = 1;
 }
 message ReadFileResponseData{
-	google.protobuf.BytesValue file_data = 1;
+	bytes file_data = 1;
 }
 
 service DataNodeService{

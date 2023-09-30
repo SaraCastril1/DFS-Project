@@ -33,5 +33,5 @@ class ReadFileRequestData(_message.Message):
 class ReadFileResponseData(_message.Message):
     __slots__ = ["file_data"]
     FILE_DATA_FIELD_NUMBER: _ClassVar[int]
-    file_data: _wrappers_pb2.BytesValue
-    def __init__(self, file_data: _Optional[_Union[_wrappers_pb2.BytesValue, _Mapping]] = ...) -> None: ...
+    file_data: bytes
+    def __init__(self, file_data: _Optional[bytes] = ...) -> None: ...
