@@ -14,12 +14,12 @@ config = dotenv_values(".env")
 
 PRODUCER_HOST = config['PRODUCER_HOST']
 PRODUCER_PORT = config['PRODUCER_PORT']
-DATA_NODE_PORT = config['DATA_NODE_PORT']
+DN1 = config['DATA_NODE_PORT-1']
 
 
 def readFile(file_name):
     try:
-        with grpc.insecure_channel(f"{PRODUCER_HOST}:{DATA_NODE_PORT}",options=[
+        with grpc.insecure_channel(f"{PRODUCER_HOST}:{DN1}",options=[
         ('grpc.max_receive_message_length', 1024 * 1024 * 100)  
     ]) as channel:
             stub = apiGateway_dataNode_pb2_grpc.DataNodeServiceStub(channel)

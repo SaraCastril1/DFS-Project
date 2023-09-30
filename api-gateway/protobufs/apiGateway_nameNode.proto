@@ -47,9 +47,11 @@ message ListFilesResponse {
 
 
 service NameNodeService {
-	rpc WriteFile(WriteFileRequest) returns (WriteFileResponse);
-	rpc ReadFile(ReadFileRequest) returns (ReadFileResponse);
-  	rpc ListFiles(ListFilesRequest) returns (ListFilesResponse);
+    rpc WriteFile(WriteFileRequest) returns (WriteFileResponse);
+    rpc ReadFile(ReadFileRequest) returns (ReadFileResponse);
+    rpc ListFiles(ListFilesRequest) returns (ListFilesResponse);
 	//rpc DeleteFile(DeleteFilesRequest) returns (DeleteFilesResponse);
 
 }
+
+
