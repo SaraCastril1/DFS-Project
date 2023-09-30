@@ -17,26 +17,6 @@ PRODUCER_PORT = config['PRODUCER_PORT']
 DATA_NODE_PORT = config['DATA_NODE_PORT']
 
 
-def find_file(pattern):
-    try:
-        with grpc.insecure_channel(f"{PRODUCER_HOST}:{PRODUCER_PORT}") as channel:
-            stub = apiGateway_nameNode_pb2_grpc.FileStub(channel)
-            response = stub.Find_file(apiGateway_nameNode_pb2.file_request(file=pattern))
-            return response
-    except:
-        print("ERROR")
-
-
-
-def list_files(directory):
-    try:
-        with grpc.insecure_channel(f"{PRODUCER_HOST}:{PRODUCER_PORT}") as channel:
-            stub = apiGateway_nameNode_pb2_grpc.FileStub(channel)
-            response = stub.List_file(apiGateway_nameNode_pb2.file_request(file=directory))
-            return response.file
-    except:
-        print("ERROR")
-
 def readFile(file_name):
     try:
         with grpc.insecure_channel(f"{PRODUCER_HOST}:{DATA_NODE_PORT}",options=[
@@ -48,6 +28,8 @@ def readFile(file_name):
     except Exception as error:
         print(error)
 
+
+
 @app.route('/readfile', methods=['POST'])
 def readfile_route():
     filename = request.json['file']
@@ -58,21 +40,6 @@ def readfile_route():
     return Response(file.file_data,content_type='application/octet-stream')
 
 
-@app.route('/find/<pattern>', methods=['GET'])
-def find_route(pattern):
-    response = find_file(pattern)
-    return f"Find result: {response.file}, {response.coincidence}"
-
-@app.route('/list/<directory>', methods=['GET'])
-def list_route(directory):
-    #my_path = os.path.join("/", directory)
-    response = list_files(directory)
-    
-    if response is not None:
-        return f"List result: {response}"  
-    else:
-        return "List result: No files found"
-    
 
 
 

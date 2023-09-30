@@ -8,7 +8,6 @@ import dataNode_apiGateway_pb2_grpc
 config = dotenv_values(".env")
 
 HOST = config['HOST']
-chunk_size = 1024 * 1024
 
 class File(dataNode_apiGateway_pb2_grpc.DataNodeServiceServicer):
       def ReadFile(self,request,context):
