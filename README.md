@@ -26,7 +26,7 @@ Acceda al marco teoríco en el siguiente link -> Informe.pdf
 ### Componentes:
 
 #### Cliente: 
-El cliente es la interfaz principal a través de la cual los usuarios acceden y administran los archivos en el sistema de archivos distribuidos. Proporcionar una API  de línea de comandos (CLI) para interactuar con el DFS.
+El cliente es la interfaz principal a través de la cual los usuarios acceden y administran los archivos en el sistema de archivos distribuidos. Es una aplicacion web simpple con la funcionalidad de descargar y subir archivos.
 
 #### NameNode Leader: 
 Es responsable de llevar un registro de la ubicación de los archivos en el sistema. Su tarea principal es mantener un mapa de qué archivos se almacenan en qué DataNodes y garantizar que haya al menos dos copias de cada archivo para tolerancia a fallos. También debe tomar decisiones sobre la asignación de archivos a DataNodes para la escritura inicial y las réplicas de archivos.
