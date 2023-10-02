@@ -1,57 +1,35 @@
 syntax = "proto3";
 
-//Escritura de archivos ------------------------------------------------------------
-
 message WriteFileRequest {
-	string folder = 1;
-  	string filename = 2;
+    string folder = 1;
+    string filename = 2;
 }
 
 message WriteFileResponse {
-	//El nameNode decide el dataNode y genera la comunicación
-	string file_id = 1;
-	repeated string data_node_addresses = 2;
+    string file_id = 1;
+    repeated string data_node_addresses = 2;
 }
 
-//Lectura  -------------------------------------------------------------------
 message ReadFileRequest {
-	string folder = 1;
-	string filename = 2;
+    //string folder = 1;
+    string filename = 1;
 }
-  
+
 message ReadFileResponse {
-	string file_id = 1;
-	repeated string data_node_addresses = 2;
-	// Otros detalles sobre el archivo, como metadatos.
+    string file_id = 1;
+    repeated string data_node_addresses = 2;
+    // Otros detalles sobre el archivo, como metadatos.
 }
 
-//Listar -----------------------------------------------------------
 message ListFilesRequest {}
-  
+
 message ListFilesResponse {
-	repeated string filenames = 1;
+    repeated string filenames = 1;
 }
-
-//Borrar archivos NO ESCENCIAL-----------------------------------------------------------
-
-// message DeleteFileRequest {
-// 	string filename = 1;
-//   }
-  
-// message DeleteFileResponse {
-// 	string file_id = 1;
-// 	repeated string data_node_addresses = 2;
-// 	// Otros detalles sobre el archivo, como metadatos.
-// }
-
-
 
 service NameNodeService {
     rpc WriteFile(WriteFileRequest) returns (WriteFileResponse);
     rpc ReadFile(ReadFileRequest) returns (ReadFileResponse);
     rpc ListFiles(ListFilesRequest) returns (ListFilesResponse);
-	//rpc DeleteFile(DeleteFilesRequest) returns (DeleteFilesResponse);
-
+    // rpc DeleteFile(DeleteFilesRequest) returns (DeleteFilesResponse);
 }
-
-

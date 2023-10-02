@@ -1,27 +1,25 @@
 syntax = "proto3";
 
-
-
 message WriteFileRequestData {
-	string folder = 1;
-  	string filename = 2;
+    string folder = 1;
+    string filename = 2;
     google.protobuf.BytesValue file_data = 3;
 }
 
 message WriteFileResponseData {
-	//El nameNode decide el dataNode y genera la comunicación
-	string file_id = 1;
-	repeated string data_node_addresses = 2;
+    string file_id = 1;
+    repeated string data_node_addresses = 2;
 }
 
-message ReadFileRequestData{
-	string file_name = 1;
-}
-message ReadFileResponseData{
-	bytes file_data = 1;
+message ReadFileRequestData {
+    string file_name = 1;
 }
 
-service DataNodeService{
-	rpc WriteFile(WriteFileRequestData) returns (WriteFileResponseData);
-	rpc ReadFile(ReadFileRequestData) returns (ReadFileResponseData);
+message ReadFileResponseData {
+    bytes file_data = 1;
+}
+
+service DataNodeService {
+    rpc WriteFile(WriteFileRequestData) returns (WriteFileResponseData);
+    rpc ReadFile(ReadFileRequestData) returns (ReadFileResponseData);
 }
