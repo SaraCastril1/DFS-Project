@@ -16,9 +16,20 @@ PRODUCER_HOST = config['PRODUCER_HOST']
 PRODUCER_PORT = config['PRODUCER_PORT']
 dn1 = config['DATA_NODE_PORT-1']
 
+#ROUNDROBIN
+current_data_node_index = 0
+data_node_addresses = ["50052", "6000", "6500"]
+
+#ROUNDROBIN
+def get_next_data_node_address():
+    global current_data_node_index
+    address = data_node_addresses[current_data_node_index]
+    current_data_node_index = (current_data_node_index + 1) % len(data_node_addresses)
+    return address
+
 def get_data_node_addresses(filename):
     try:
-        with grpc.insecure_channel(f"{PRODUCER_HOST}:{50051}") as channel:
+        with grpc.insecure_channel(f"{PRODUCER_HOST}:{PRODUCER_PORT}") as channel:
             stub = apiGateway_nameNode_pb2_grpc.NameNodeServiceStub(channel)
             response = stub.ReadFile(apiGateway_nameNode_pb2.ReadFileRequest(filename=filename))
             print("Addresses: ", response.data_node_addresses)
@@ -51,8 +62,8 @@ def readfile_route():
         if not data_node_addresses:
             return Response('No se pudieron obtener las direcciones de los DataNodes', status=500, content_type='application/json')
 
-        # Supongamos que deseas obtener el archivo desde el primer DataNode de la lista
-        file_data = get_file_from_data_node(data_node_addresses[0], filename)
+        my_dataNode = get_next_data_node_address()
+        file_data = get_file_from_data_node(my_dataNode, filename)
 
         if not file_data:
             return Response('Archivo no encontrado en los DataNodes', status=404, content_type='application/json')

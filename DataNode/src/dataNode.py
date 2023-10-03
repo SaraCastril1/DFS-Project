@@ -15,6 +15,7 @@ class File(dataNode_apiGateway_pb2_grpc.DataNodeServiceServicer):
       def ReadFile(self,request,context):
             try:
                   with open(request.file_name, 'rb') as file:
+                        print(request.file_name)
                         file_contents = file.read()
                         response = dataNode_apiGateway_pb2.ReadFileResponseData(file_data=file_contents)
                         return response
