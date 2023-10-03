@@ -11,10 +11,9 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-from google.protobuf import wrappers_pb2 as google_dot_protobuf_dot_wrappers__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19\x61piGateway-dataNode.proto\x1a\x1egoogle/protobuf/wrappers.proto\"h\n\x14WriteFileRequestData\x12\x0e\n\x06\x66older\x18\x01 \x01(\t\x12\x10\n\x08\x66ilename\x18\x02 \x01(\t\x12.\n\tfile_data\x18\x03 \x01(\x0b\x32\x1b.google.protobuf.BytesValue\"E\n\x15WriteFileResponseData\x12\x0f\n\x07\x66ile_id\x18\x01 \x01(\t\x12\x1b\n\x13\x64\x61ta_node_addresses\x18\x02 \x03(\t\"(\n\x13ReadFileRequestData\x12\x11\n\tfile_name\x18\x01 \x01(\t\")\n\x14ReadFileResponseData\x12\x11\n\tfile_data\x18\x01 \x01(\x0c\x32\x86\x01\n\x0f\x44\x61taNodeService\x12:\n\tWriteFile\x12\x15.WriteFileRequestData\x1a\x16.WriteFileResponseData\x12\x37\n\x08ReadFile\x12\x14.ReadFileRequestData\x1a\x15.ReadFileResponseDatab\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19\x61piGateway-dataNode.proto\"b\n\x14WriteFileRequestData\x12\x0e\n\x06\x66older\x18\x01 \x01(\t\x12\x10\n\x08\x66ilename\x18\x02 \x01(\t\x12\x11\n\tfile_data\x18\x03 \x01(\x0c\x12\x15\n\rcreate_folder\x18\x04 \x01(\t\".\n\x15WriteFileResponseData\x12\x15\n\rwrite_success\x18\x01 \x01(\x08\"(\n\x13ReadFileRequestData\x12\x11\n\tfile_name\x18\x01 \x01(\t\")\n\x14ReadFileResponseData\x12\x11\n\tfile_data\x18\x01 \x01(\x0c\x32\x86\x01\n\x0f\x44\x61taNodeService\x12:\n\tWriteFile\x12\x15.WriteFileRequestData\x1a\x16.WriteFileResponseData\x12\x37\n\x08ReadFile\x12\x14.ReadFileRequestData\x1a\x15.ReadFileResponseDatab\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -22,14 +21,14 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'apiGateway_dataNode_pb2', _
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _globals['_WRITEFILEREQUESTDATA']._serialized_start=61
-  _globals['_WRITEFILEREQUESTDATA']._serialized_end=165
-  _globals['_WRITEFILERESPONSEDATA']._serialized_start=167
-  _globals['_WRITEFILERESPONSEDATA']._serialized_end=236
-  _globals['_READFILEREQUESTDATA']._serialized_start=238
-  _globals['_READFILEREQUESTDATA']._serialized_end=278
-  _globals['_READFILERESPONSEDATA']._serialized_start=280
-  _globals['_READFILERESPONSEDATA']._serialized_end=321
-  _globals['_DATANODESERVICE']._serialized_start=324
-  _globals['_DATANODESERVICE']._serialized_end=458
+  _globals['_WRITEFILEREQUESTDATA']._serialized_start=29
+  _globals['_WRITEFILEREQUESTDATA']._serialized_end=127
+  _globals['_WRITEFILERESPONSEDATA']._serialized_start=129
+  _globals['_WRITEFILERESPONSEDATA']._serialized_end=175
+  _globals['_READFILEREQUESTDATA']._serialized_start=177
+  _globals['_READFILEREQUESTDATA']._serialized_end=217
+  _globals['_READFILERESPONSEDATA']._serialized_start=219
+  _globals['_READFILERESPONSEDATA']._serialized_end=260
+  _globals['_DATANODESERVICE']._serialized_start=263
+  _globals['_DATANODESERVICE']._serialized_end=397
 # @@protoc_insertion_point(module_scope)

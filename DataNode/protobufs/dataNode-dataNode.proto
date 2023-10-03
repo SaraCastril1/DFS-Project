@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+
+
+message ReplicateFile {
+	string folder = 1;
+  	string filename = 2;
+    bytes file_data = 3;
+}
+
+message ReplicateFileResponse{
+    string replicated = 1;
+}
+
+
+service ReplicateService{
+	rpc WriteFile(ReplicateFile) returns (ReplicateFileResponse);
+}

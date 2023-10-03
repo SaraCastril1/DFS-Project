@@ -1,0 +1,46 @@
+name: dfs
+channels:
+  - defaults
+dependencies:
+  - _libgcc_mutex=0.1
+  - _openmp_mutex=5.1
+  - abseil-cpp=20211102.0
+  - bzip2=1.0.8
+  - c-ares=1.19.1
+  - ca-certificates=2023.08.22
+  - click=8.0.4
+  - flask=2.2.2
+  - grpcio=1.42.0
+  - grpcio-tools=1.42.0
+  - itsdangerous=2.0.1
+  - jinja2=3.1.2
+  - ld_impl_linux-64=2.38
+  - libffi=3.4.4
+  - libgcc-ng=11.2.0
+  - libgomp=11.2.0
+  - libprotobuf=3.20.3
+  - libstdcxx-ng=11.2.0
+  - libuuid=1.41.5
+  - markupsafe=2.1.1
+  - ncurses=6.4
+  - openssl=1.1.1w
+  - pip=23.2.1
+  - protobuf=3.20.3
+  - python=3.11.5
+  - python-dotenv=0.21.0
+  - re2=2022.04.01
+  - readline=8.2
+  - setuptools=68.0.0
+  - six=1.16.0
+  - sqlite=3.41.2
+  - tk=8.6.12
+  - tzdata=2023c
+  - werkzeug=2.2.3
+  - wheel=0.38.4
+  - xz=5.4.2
+  - zlib=1.2.13
+  - pip:
+      - flask-cors==4.0.0
+      - install==1.3.5
+      - pika==1.3.2
+prefix: /home/simon/anaconda3/envs/dfs

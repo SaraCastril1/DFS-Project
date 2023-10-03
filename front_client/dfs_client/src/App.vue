@@ -7,12 +7,12 @@ import HelloWorld from './components/HelloWorld.vue'
   <header>
 
     <div class="wrapper">
-      <HelloWorld msg="Cliente para el sistema de archvos distribuidos" />
+      <HelloWorld msg="Cliente para el sistema de archivos distribuidos" />
       
 
       <nav>
-      <!--  <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>-->
+       <RouterLink to="/">Descargar Archivos</RouterLink>
+        <RouterLink to="/writefile">Subir Archivos</RouterLink>
       </nav>
     </div>
   </header>

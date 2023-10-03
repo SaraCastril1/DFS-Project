@@ -1,29 +1,24 @@
-
-
 <template>
-    <div>
+   
         <div class="searchbar">
       <input  v-model="searchTerm" placeholder="Testfile.txt">
       <button src="../assets/search-svgrepo-com.svg" @click="search">Buscar</button>
         </div>
   
       <div v-if="downloadLink" class="download-link">
-      <h2>Download File</h2>
-      <a :href="downloadLink" :download="downloadFileName">Download {{downloadFileName}}</a>
+      <h2 >Download File:</h2>
+      <a :href="downloadLink" :download="downloadFileName"> {{downloadFileName}}</a>
     </div>
-    </div>
-
+  
+    <h3 v-if="showError ==  true" class="error-msg">File not found</h3>
 
   </template>
   
   <script>
   import axios from 'axios';
-  import VueBasicAlert from 'vue-basic-alert'
   
   export default {
-    components:{
-        VueBasicAlert
-    },
+
     data() {
       return {
         searchTerm: '',
@@ -39,6 +34,7 @@
   
         axios.post(apiUrl,{"file":this.searchTerm}, { responseType: 'arraybuffer' })
         .catch((error)=>{
+          this.showError = true;
             console.log(error)
             
         })
@@ -51,15 +47,23 @@
             //this.searchResults = response;
             this.downloadFileName = this.searchTerm;
             this.downloadLink = url;  
+            this.showError = false;
         })
+
 
       },
     },
   };
   </script>
-<style>
+<style scoped>
     @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
+.error-msg{
+  display: flex;
+  justify-content: center;
+  color: red;
+}
+    
 .searchbar{
     display: flex;
     justify-content: center;
@@ -70,6 +74,15 @@
     display: flex;
     justify-content: center;
 
+}
+.download-link h2{
+  margin-right: 10px;
+}
+.download-link a{
+  
+  color: darkgreen;
+  font-size: x-large;
+  
 }
 
 input {
@@ -97,71 +110,6 @@ button{
 }
 
 
-
-.alert {
-  position: relative;
-  top: 10;
-  left: 0;
-  width: auto;
-  height: auto;
-  padding: 10px;
-  margin: 10px;
-  line-height: 1.8;
-  border-radius: 5px;
-  cursor: hand;
-  cursor: pointer;
-  font-family: sans-serif;
-  font-weight: 400;
-}
-
-.alertCheckbox {
-  display: none;
-}
-
-:checked + .alert {
-  display: none;
-}
-
-.alertText {
-  display: table;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 16px;
-}
-
-.alertClose {
-  float: right;
-  padding-top: 5px;
-  font-size: 10px;
-}
-
-.clear {
-  clear: both;
-}
-
-.info {
-  background-color: #EEE;
-  border: 1px solid #DDD;
-  color: #999;
-}
-
-.success {
-  background-color: #EFE;
-  border: 1px solid #DED;
-  color: #9A9;
-}
-
-.notice {
-  background-color: #EFF;
-  border: 1px solid #DEE;
-  color: #9AA;
-}
-
-.warning {
-  background-color: #FDF7DF;
-  border: 1px solid #FEEC6F;
-  color: #C9971C;
-}
 
 .error {
   background-color: #FEE;
