@@ -133,6 +133,10 @@ Fase 6: Documentación y Entrega.
 # 4. Descripción del ambiente de EJECUCIÓN (en producción) lenguaje de programación, librerias, paquetes, etc, con sus numeros de versiones.
 
 # IP o nombres de dominio en nube o en la máquina servidor.
+nameNode -> localhost:50051
+dataNode -> localhost:50052
+nameNode2 -> localhost:6000
+nameNode3 -> localhost:6500
 
 ## descripción y como se configura los parámetros del proyecto (ej: ip, puertos, conexión a bases de datos, variables de ambiente, parámetros, etc)
 
@@ -150,4 +154,3 @@ Fase 6: Documentación y Entrega.
 ## sitio2-url
 ## url de donde tomo info para desarrollar este proyecto
 
-#### versión README.md -> 1.0 (2022-agosto)
