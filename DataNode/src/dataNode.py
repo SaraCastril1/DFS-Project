@@ -31,8 +31,8 @@ class DataNodeService(dataNode_apiGateway_pb2_grpc.DataNodeServiceServicer):
                               file.write(request.file_data)
                   response = dataNode_apiGateway_pb2.WriteFileResponseData(write_success=True)
                   print(response)
-                  replication_response = Replicate(request.filename,request.folder,request.file_data,request.create_folder)
-                  print(replication_response)
+                  #replication_response = Replicate(request.filename,request.folder,request.file_data,request.create_folder)
+                  #print(replication_response)
                   return response
             except Exception as error:
                         response = dataNode_apiGateway_pb2.WriteFileResponseData(write_success=False)
