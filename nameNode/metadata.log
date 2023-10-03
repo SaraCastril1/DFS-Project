@@ -1,0 +1,10 @@
+.env | . | 50052 | 6000 | 6500
+Makefile | . | 50052 | 6000 | 6500
+casco.jpg | . | 50052 | 6000 | 6500
+casemiro.gif | . | 50052 | 6000 | 6500
+testfile.txt | . | 50052 | 6000 | 6500
+dataNode.py | src | 50052 | 6000 | 6500
+dataNode_apiGateway_pb2_grpc.py | src | 50052 | 6000 | 6500
+dataNode_apiGateway_pb2.pyi | src | 50052 | 6000 | 6500
+dataNode_apiGateway_pb2.py | src | 50052 | 6000 | 6500
+dataNode-apiGateway.proto | protobufs | 50052 | 6000 | 6500

@@ -5,6 +5,7 @@ import grpc
 import dataNode_apiGateway_pb2
 import dataNode_apiGateway_pb2_grpc
 
+
 config = dotenv_values(".env")
 
 DN1 = config['HOST-1']

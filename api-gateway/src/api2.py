@@ -1,12 +1,12 @@
-from flask import Flask, request, Response, send_file
+from flask import Flask, request, Response
 from flask_cors import CORS
 import os
 from dotenv import dotenv_values
 import grpc
 import apiGateway_nameNode_pb2_grpc
 import apiGateway_nameNode_pb2
-import  apiGateway_dataNode_pb2
-import  apiGateway_dataNode_pb2_grpc
+import apiGateway_dataNode_pb2
+import apiGateway_dataNode_pb2_grpc
 
 app = Flask(__name__)
 CORS(app)
@@ -16,23 +16,23 @@ PRODUCER_HOST = config['PRODUCER_HOST']
 PRODUCER_PORT = config['PRODUCER_PORT']
 dn1 = config['DATA_NODE_PORT-1']
 
-def get_data_node_address(filename):
+def get_data_node_addresses(filename):
     try:
         with grpc.insecure_channel(f"{PRODUCER_HOST}:{50051}") as channel:
             stub = apiGateway_nameNode_pb2_grpc.NameNodeServiceStub(channel)
             response = stub.ReadFile(apiGateway_nameNode_pb2.ReadFileRequest(filename=filename))
-            return response.data_node_addresses[0]
+            print("Addresses: ", response.data_node_addresses)
+            return response.data_node_addresses
     except Exception as error:
         print(f"Error al obtener la dirección del DataNode: {error}")
         return None
 
-
 def get_file_from_data_node(data_node_address, filename):
-    print("Voy a establecer conexión con {}:{}".format(PRODUCER_HOST,data_node_address))
+    print("Voy a establecer conexión con {}:{}".format(PRODUCER_HOST, data_node_address))
     try:
-        with grpc.insecure_channel(f"{PRODUCER_HOST}:{data_node_address}",options=[
-        ('grpc.max_receive_message_length', 1024 * 1024 * 100)  
-    ]) as channel:
+        with grpc.insecure_channel(f"{PRODUCER_HOST}:{data_node_address}", options=[
+            ('grpc.max_receive_message_length', 1024 * 1024 * 100)
+        ]) as channel:
             stub = apiGateway_dataNode_pb2_grpc.DataNodeServiceStub(channel)
             # Envía una solicitud para leer el archivo al DataNode
             response = stub.ReadFile(apiGateway_dataNode_pb2.ReadFileRequestData(file_name=filename))
@@ -45,20 +45,19 @@ def get_file_from_data_node(data_node_address, filename):
 def readfile_route():
     try:
         filename = request.json['file']
-        data_node_address = get_data_node_address(filename)
-        print("El archivo solicitado está en: {}".format(data_node_address))
+        data_node_addresses = get_data_node_addresses(filename)
+        print("El archivo solicitado está en las siguientes direcciones de DataNodes:", data_node_addresses)
 
-        if not data_node_address:
-            return Response('No se pudo obtener la dirección del DataNode', status=500, content_type='application/json')
+        if not data_node_addresses:
+            return Response('No se pudieron obtener las direcciones de los DataNodes', status=500, content_type='application/json')
 
-         # Inicia la conexión con el DataNode y solicita el archivo
-        file_data = get_file_from_data_node(data_node_address, filename)
+        # Supongamos que deseas obtener el archivo desde el primer DataNode de la lista
+        file_data = get_file_from_data_node(data_node_addresses[0], filename)
 
         if not file_data:
-            return Response('Archivo no encontrado', status=404, content_type='application/json')
+            return Response('Archivo no encontrado en los DataNodes', status=404, content_type='application/json')
 
         return Response(file_data, content_type='application/octet-stream')
-
 
     except Exception as error:
         print(f"Error en la solicitud: {error}")
