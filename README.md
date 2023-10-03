@@ -89,8 +89,11 @@ La selección de DataNode inicial para la escritura y lectura puede ser gestiona
 # 3. Descripción del ambiente de desarrollo y técnico: lenguaje de programación, librerias, paquetes, etc, con sus numeros de versiones.
 
 ## como se compila y ejecuta.
-Para compilar debes colocar en la consola :hay que ubicarse en la carpeta que quieres ejecutra,le das "cd .\nameNode\" luego enter  das enter y despues ingresas "make NameNode"
-Para ejecucion: "python .\src\nameNode.py"
+-Para compilar debes colocar en la consola :hay que ubicarse en la carpeta que quieres ejecutra,le das "cd .\nameNode\" luego enter  das enter y despues ingresas "make NameNode"
+
+-Para ejecucion: "python .\src\nameNode.py"
+
+Se hace lo mismo para el apiGateway y el dataNode , la unica diferencia es que en ves NameNode colocas  apiGateway o el dataNode que usaras ya que son 3.
 ## detalles del desarrollo.
 Fase 1: Definición de Requisitos y Diseño Inicial 
 Fase 2: Implementación del NameNode 
