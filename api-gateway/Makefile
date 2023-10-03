@@ -1,7 +1,7 @@
 .PHONY = pb2
 SHELL := /bin/bash
 
-client:
+api-apiGateway:
 	pip3 install grpcio grpcio-tools
 	pip install Flask
 	pip install pika
