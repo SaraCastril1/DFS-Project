@@ -93,28 +93,28 @@ La selección de DataNode inicial para la escritura y lectura puede ser gestiona
 Fase 1: Definición de Requisitos y Diseño Inicial 
 Fase 2: Implementación del NameNode 
 
-	- Implementación del NameNode: Inicia la implementación del NameNode, centrándote en la gestión de metadatos y la comunicación con el cliente.
+- Implementación del NameNode: Inicia la implementación del NameNode, centrándote en la gestión de metadatos y la comunicación con el cliente.
 
-	- Protocolo Cliente-NameNode: Define y crea los archivos proto para las operaciones de comunicación entre el cliente y el NameNode.
+- Protocolo Cliente-NameNode: Define y crea los archivos proto para las operaciones de comunicación entre el cliente y el NameNode.
 
 
 Fase 3: Implementación de DataNodes y Comunicación Cliente-DataNode 
 
-	- Implementación de DataNodes: Comienza a implementar la lógica de los DataNodes, centrándote en el almacenamiento y la replicación de datos.
+- Implementación de DataNodes: Comienza a implementar la lógica de los DataNodes, centrándote en el almacenamiento y la replicación de datos.
 
-	- Protocolo Cliente-DataNode: Define y crea los archivos proto para las operaciones de comunicación entre el cliente y los DataNodes.
+- Protocolo Cliente-DataNode: Define y crea los archivos proto para las operaciones de comunicación entre el cliente y los DataNodes.
 
 Fase 4: Pruebas Iniciales
 
-	- Pruebas de Integración: Realiza pruebas de integración básicas para verificar que el cliente pueda comunicarse con el NameNode y los DataNodes.
+- Pruebas de Integración: Realiza pruebas de integración básicas para verificar que el cliente pueda comunicarse con el NameNode y los DataNodes.
 
-	- Pruebas de Escritura y Lectura: Implementa operaciones de escritura y lectura básicas para validar que el sistema pueda almacenar y recuperar archivos.
+- Pruebas de Escritura y Lectura: Implementa operaciones de escritura y lectura básicas para validar que el sistema pueda almacenar y recuperar archivos.
 
 Fase 5: Réplica de Datos 
 
-	- Implementación de la Réplica: Implementa la lógica necesaria para la replicación de datos entre DataNodes.
+- Implementación de la Réplica: Implementa la lógica necesaria para la replicación de datos entre DataNodes.
 
-	- Pruebas de Tolerancia a Fallos: Realiza pruebas para asegurarte de que el sistema pueda recuperarse de manera adecuada en caso de fallo de un DataNode.
+- Pruebas de Tolerancia a Fallos: Realiza pruebas para asegurarte de que el sistema pueda recuperarse de manera adecuada en caso de fallo de un DataNode.
 
 
 Fase 6: Documentación y Entrega.
