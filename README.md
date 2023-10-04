@@ -129,13 +129,13 @@ Fase 5: Réplica de Datos
 
 Fase 6: Documentación y Entrega.
 
-# IP o nombres de dominio en nube o en la máquina servidor.
+
+# descripción y como se configura los parámetros del proyecto (ej: ip, puertos, conexión a bases de datos, variables de ambiente, parámetros, etc)
+## IP o nombres de dominio en nube o en la máquina servidor.
 nameNode -> localhost:50051
 dataNode -> localhost:50052
 nameNode2 -> localhost:6000
 nameNode3 -> localhost:6500
-
-## descripción y como se configura los parámetros del proyecto (ej: ip, puertos, conexión a bases de datos, variables de ambiente, parámetros, etc)
 
 ## como se lanza el servidor.
 En el repositorio hay un archivo .yml con la version de Python y todas las dependencias que necesita el proyecto.Una ves instalada todas estas dependencias para correr el  apiGateway hay que moverse a la carpeta de la misma y colocar el siguiente comando "sudo python src/apigateway.py" y asi con el datanode y el namenode solo que cambia el comando para correr el datanode ```python src/datanode.py``` y para el namenode ```python src/namenode.py ```.
