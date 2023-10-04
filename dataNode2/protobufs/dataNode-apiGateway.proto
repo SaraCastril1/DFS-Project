@@ -1,19 +1,18 @@
 syntax = "proto3";
 
-import "google/protobuf/wrappers.proto";
-
 
 
 message WriteFileRequestData {
 	string folder = 1;
   	string filename = 2;
-    google.protobuf.BytesValue file_data = 3;
+    bytes file_data = 3;
+	string create_folder = 4;
 }
 
 message WriteFileResponseData {
 	//El nameNode decide el dataNode y genera la comunicación
-	string file_id = 1;
-	repeated string data_node_addresses = 2;
+	bool write_success = 1;
+	
 }
 
 message ReadFileRequestData{

@@ -82,9 +82,9 @@ def readfile_route():
 
 # TO DO: WRITE FILE!!!!!------------------------------------------------------------------------
 
-def writeFile(filename,folder,file_data,create_folder, data_node_port):
+def writeFile(filename,folder,file_data,create_folder):
     try:
-        with grpc.insecure_channel(f"{PRODUCER_HOST}:{data_node_port}",options=[
+        with grpc.insecure_channel(f"{PRODUCER_HOST}:{50052}",options=[
         ('grpc.max_receive_message_length', 1024 * 1024 * 100)  
     ]) as channel:
             stub = apiGateway_dataNode_pb2_grpc.DataNodeServiceStub(channel)
