@@ -93,11 +93,12 @@ Lenguaje de programacion: Python
 Librerias :Flask , Grpcio y Vue js
 
 ## como se compila y ejecuta.
--Para compilar debes colocar en la consola :hay que ubicarse en la carpeta que quieres ejecutra,le das "cd .\nameNode\" luego enter  das enter y despues ingresas "make NameNode"
+-Para compilar debes colocar en la consola :hay que ubicarse en la carpeta que quieres ejecutra,le das ```cd .\nameNode\```  luego enter  das enter y despues ingresas ```make NameNode```.
 
--Para ejecucion: "python .\src\nameNode.py"
+-Para ejecucion: ```python .\src\nameNode.py```.
 
 Se hace lo mismo para el apiGateway y el dataNode , la unica diferencia es que en ves NameNode colocas  apiGateway o el dataNode que usaras ya que son 3.
+
 ## detalles del desarrollo.
 Fase 1: Definición de Requisitos y Diseño Inicial 
 Fase 2: Implementación del NameNode 
