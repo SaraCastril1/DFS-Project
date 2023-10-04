@@ -88,6 +88,10 @@ La selección de DataNode inicial para la escritura y lectura puede ser gestiona
 
 # 3. Descripción del ambiente de desarrollo y técnico: lenguaje de programación, librerias, paquetes, etc, con sus numeros de versiones.
 
+Lenguaje de programacion: Python
+
+Librerias :Flask , Grpcio y Vue js
+
 ## como se compila y ejecuta.
 -Para compilar debes colocar en la consola :hay que ubicarse en la carpeta que quieres ejecutra,le das "cd .\nameNode\" luego enter  das enter y despues ingresas "make NameNode"
 
@@ -124,14 +128,6 @@ Fase 5: Réplica de Datos
 
 Fase 6: Documentación y Entrega.
 
-## detalles técnicos
-## descripción y como se configura los parámetros del proyecto (ej: ip, puertos, conexión a bases de datos, variables de ambiente, parámetros, etc)
-## opcional - detalles de la organización del código por carpetas o descripción de algún archivo. (ESTRUCTURA DE DIRECTORIOS Y ARCHIVOS IMPORTANTE DEL PROYECTO, comando 'tree' de linux)
-## 
-## opcionalmente - si quiere mostrar resultados o pantallazos 
-
-# 4. Descripción del ambiente de EJECUCIÓN (en producción) lenguaje de programación, librerias, paquetes, etc, con sus numeros de versiones.
-
 # IP o nombres de dominio en nube o en la máquina servidor.
 nameNode -> localhost:50051
 dataNode -> localhost:50052
@@ -141,16 +137,17 @@ nameNode3 -> localhost:6500
 ## descripción y como se configura los parámetros del proyecto (ej: ip, puertos, conexión a bases de datos, variables de ambiente, parámetros, etc)
 
 ## como se lanza el servidor.
+En el repositorio hay un archivo .yml con la version de Python y todas las dependencias que necesita el proyecto.Una ves instalada todas estas dependencias para correr el  apiGateway hay que moverse a la carpeta de la misma y colocar el siguiente comando "sudo python src/apigateway.py" y asi con el datanode y el namenode solo que cambia el comando para correr el datanode ```python src/datanode.py``` y para el namenode ```python src/namenode.py ```.
+
+Para correr el cliente hay que dirigirse a la carpeta de dfs_client y corres los siguientes comandos:
+```npm install``` (cuando es por primera vez)
+```npm run dev``` (para correrlo)
+
 
 ## una mini guia de como un usuario utilizaría el software o la aplicación
+![image](https://github.com/SaraCastril1/DFS-Project/assets/74980999/2a616349-ddf3-411f-9ec1-236bdcd8dd85)
+![image](https://github.com/SaraCastril1/DFS-Project/assets/74980999/dd950dd7-866e-486b-a4de-4aa414aa80df)
+![image](https://github.com/SaraCastril1/DFS-Project/assets/74980999/5dc13488-24f1-42d8-88f0-5b994a3e2ae3)
 
-## opcionalmente - si quiere mostrar resultados o pantallazos 
 
-# 5. otra información que considere relevante para esta actividad.
-
-# referencias:
-<debemos siempre reconocer los créditos de partes del código que reutilizaremos, así como referencias a youtube, o referencias bibliográficas utilizadas para desarrollar el proyecto o la actividad>
-## sitio1-url 
-## sitio2-url
-## url de donde tomo info para desarrollar este proyecto
 
