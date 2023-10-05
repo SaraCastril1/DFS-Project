@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+message WriteFileRequest {
+    string folder = 1;
+    string filename = 2;
+}
+
+message WriteFileResponse {
+    string file_id = 1;
+    repeated string data_node_addresses = 2;
+}
+
+message ReadFileRequest {
+    string folder = 1;
+    string filename = 2;
+}
+
+message ReadFileResponse {
+    string file_id = 1;
+    repeated string data_node_addresses = 2;
+    // Otros detalles sobre el archivo, como metadatos.
+}
+
+message ListFilesRequest {}
+
+message ListFilesResponse {
+    repeated string filenames = 1;
+}
+
+
+message AddFileRequest {
+    string filename = 1;
+    string folder = 2;
+    string data_node_address = 3;
+}
+
+message AddFileResponse {
+    bool success = 1;
+}
+
+
+service NameNodeService {
+    rpc WriteFile(WriteFileRequest) returns (WriteFileResponse);
+    rpc ReadFile(ReadFileRequest) returns (ReadFileResponse);
+    rpc ListFiles(ListFilesRequest) returns (ListFilesResponse);
+    rpc AddFile(AddFileRequest) returns (AddFileResponse);
+    // rpc DeleteFile(DeleteFilesRequest) returns (DeleteFilesResponse);
+}

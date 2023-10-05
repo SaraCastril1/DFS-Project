@@ -1,0 +1,3 @@
+- Métodos cerrados --> Requieren un intervalo en donde debe estar la solución real, siempre convergen.
+
+- Métodos abiertos --> NO requieren un intervalo en donde debe estar la solución real. NO siempre convergen, pero si lo hacen son mucho más RÁPIDOS.
