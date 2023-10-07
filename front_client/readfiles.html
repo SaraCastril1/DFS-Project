@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Reader</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>File Reader</h1>
+    <form id="fileForm">
+        <label for="filename">Enter a filename:</label>
+        <input type="text" id="filename" name="filename" required>
+        <button type="submit">Read File</button>
+    </form>
+    
+    <script>
+        const form = document.getElementById('fileForm');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const filename = document.getElementById('filename').value;
+
+            // Realizar la solicitud POST utilizando Axios
+            axios.post('http://localhost/readfile', { filename })
+                .then(function(response) {
+                    // Crear un Blob desde los datos binarios de la respuesta
+                    const blob = new Blob([response.data], { type: 'application/octet-stream' });
+
+                    // Crear un enlace para descargar el archivo
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = window.URL.createObjectURL(blob);
+                    downloadLink.download = filename;
+
+                    // Agregar el enlace al DOM
+                    document.body.appendChild(downloadLink);
+
+                    // Simular un clic en el enlace para iniciar la descarga
+                    downloadLink.click();
+
+                    // Limpiar el enlace del DOM
+                    document.body.removeChild(downloadLink);
+                })
+                .catch(function(error) {
+                    // Manejar errores aquí
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+</body>
+</html>

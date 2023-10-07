@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+message ReadFileRequestData {
+    string file_name = 1;
+}
+
+message ReadFileResponseData {
+    bytes file_data = 1;
+}
+
+service ApiGatewayService {
+    rpc ReadFile(ReadFileRequestData) returns (ReadFileResponseData);
+}
