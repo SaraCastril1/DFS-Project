@@ -76,7 +76,10 @@ class File(apiGateway_nameNode_pb2_grpc.NameNodeServiceServicer):
         immediateFolder = request.folder
 
         if fileName in self.metaData:
+            folder = self.metaData[fileName]["Immediate folder"]
             data_nodes = self.metaData[fileName]["Data nodes"]  # Cambio aquí: fileName en lugar de file_name
+            if folder != '':
+                fileName = f'{folder}/{fileName}'
             return apiGateway_nameNode_pb2.ReadFileResponse(file_id=fileName, data_node_addresses=data_nodes)
         else:
             context.set_code(grpc.StatusCode.NOT_FOUND)
@@ -103,7 +106,7 @@ def serve():
 
 
     # Agrega archivos a la estructura de datos metaData antes de iniciar el servidor
-    file_service.load_metadata_from_log(r"C:\Users\dulce\OneDrive\Escritorio\EAFIT\2023-2\Telematica\Proyect\DFS-PROYECT-DEFINITIVO\DFS-Project\nameNode\metadata.log")
+    file_service.load_metadata_from_log(r"metadata.log")
    
 
     print(file_service.metaData)

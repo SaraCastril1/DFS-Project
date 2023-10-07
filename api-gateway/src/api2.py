@@ -20,11 +20,13 @@ PRODUCER_PORT = config['PRODUCER_PORT']
 #ROUNDROBIN
 current_data_node_index = 0
 data_node_addresses = ["50052", "6000", "6500"]
+data_node_addresses_tuples = [("50052","50053"),("6000","6001"),("6500","6501")]
+data_node_dict = {"50052":"50053","6000":"6001","6500":"6501"}
 
 #ROUNDROBIN
 def get_next_data_node_address():
     global current_data_node_index
-    address = data_node_addresses[current_data_node_index]
+    address = data_node_addresses_tuples[current_data_node_index]
     current_data_node_index = (current_data_node_index + 1) % len(data_node_addresses)
     return address
 
@@ -36,7 +38,8 @@ def get_data_node_addresses(filename):
             stub = apiGateway_nameNode_pb2_grpc.NameNodeServiceStub(channel)
             response = stub.ReadFile(apiGateway_nameNode_pb2.ReadFileRequest(filename=filename))
             print("Addresses: ", response.data_node_addresses)
-            return response.data_node_addresses
+            print(f'full file name: {response.file_id}')
+            return [response.data_node_addresses,response.file_id]
     except Exception as error:
         print(f"Error al obtener la dirección del DataNode: {error}")
         return None
@@ -44,17 +47,17 @@ def get_data_node_addresses(filename):
 
 def get_file_from_data_node(data_node_address, filename):
     print("Connected with: {}:{}".format(PRODUCER_HOST, data_node_address))
-    try:
-        with grpc.insecure_channel(f"{PRODUCER_HOST}:{data_node_address}", options=[
-            ('grpc.max_receive_message_length', 1024 * 1024 * 100)
-        ]) as channel:
-            stub = apiGateway_dataNode_pb2_grpc.DataNodeServiceStub(channel)
-            # Envía una solicitud para leer el archivo al DataNode
-            response = stub.ReadFile(apiGateway_dataNode_pb2.ReadFileRequestData(file_name=filename))
-            return response.file_data
-    except Exception as error:
-        print(f"Error al recuperar el archivo del DataNode: {error}")
-        return None
+#    try:
+    with grpc.insecure_channel(f"{PRODUCER_HOST}:{data_node_address}", options=[
+        ('grpc.max_receive_message_length', 1024 * 1024 * 100)
+    ]) as channel:
+        stub = apiGateway_dataNode_pb2_grpc.DataNodeServiceStub(channel)
+        # Envía una solicitud para leer el archivo al DataNode
+        response = stub.ReadFile(apiGateway_dataNode_pb2.ReadFileRequestData(file_name=filename))
+        return response.file_data
+#    except Exception as error:
+#        print(f"Error al recuperar el archivo del DataNode: {error}")
+#        return None
 
 
 
@@ -65,13 +68,19 @@ def readfile_route():
         print(filename)
         data_node_addresses = get_data_node_addresses(filename)
         print(data_node_addresses)
-        print("El archivo solicitado está en las siguientes direcciones de DataNodes:", data_node_addresses)
+        print("El archivo solicitado está en las siguientes direcciones de DataNodes:", data_node_addresses[0][0])
+        print("En: ", data_node_addresses[1])
+
 
         if not data_node_addresses:
             return Response('No se pudieron obtener las direcciones de los DataNodes', status=500, content_type='application/json')
 
-        my_dataNode = get_next_data_node_address()
-        file_data = get_file_from_data_node(data_node_addresses[0], filename)
+
+        try:
+            file_data = get_file_from_data_node(data_node_addresses[0][0], data_node_addresses[1])
+        except:
+
+            file_data = get_file_from_data_node(data_node_dict[data_node_addresses[0][0]], data_node_addresses[1])
 
         if not file_data:
             return Response('Archivo no encontrado en los DataNodes', status=404, content_type='application/json')
@@ -87,7 +96,7 @@ def readfile_route():
 # TO DO: WRITE FILE!!!!!------------------------------------------------------------------------
 
 def write_file_to_data_node(data_node_address, filename, folder, file_data, create_folder):
-    try:
+ #   try:
         with grpc.insecure_channel(f"{PRODUCER_HOST}:{data_node_address}", options=[
             ('grpc.max_receive_message_length', 1024 * 1024 * 100)
         ]) as channel:
@@ -108,10 +117,10 @@ def write_file_to_data_node(data_node_address, filename, folder, file_data, crea
             if hasattr(response, 'write_success') and response.write_success:
                 return True
             else:
-                return False
-    except Exception as error:
-        print(f"Error on writting to the DataNode {data_node_address} : {error}")
-        return None
+                return None
+ #   except Exception as error:
+ #       print(f"Error on writting to the DataNode {data_node_address} : {error}")
+  #      return None
 
 
 
@@ -122,7 +131,7 @@ def add_file_to_name_node(filename, folder, data_node_address):
             request = apiGateway_nameNode_pb2.AddFileRequest(
                 filename=filename,
                 folder=folder,
-                data_node_address=data_node_address
+                data_node_address=data_node_address[0]
             )
             response = stub.AddFile(request)
             return response.success
@@ -140,13 +149,21 @@ def writefile_route():
         file_data = request.files['file_data'].read() 
         create_folder = request.form.get('create_folder')
 
-        print("Received file:", filename, "in folder:", folder)
-        print(file_data)
+
 
         my_dataNode = get_next_data_node_address()  # Get DataNode addresses from NameNode
         print("Data will be sent to: ", my_dataNode)
+        print('leader: ',my_dataNode[0])
+        print('follower: ',my_dataNode[1])
+        try:
+            print('writting...')
+            data_node_response = write_file_to_data_node(my_dataNode[0], filename, folder, file_data, create_folder)
+            print('writting in follower...')
+            data_node_response = write_file_to_data_node(my_dataNode[1], filename, folder, file_data, create_folder)
+        except Exception as error:
+            data_node_response = write_file_to_data_node(my_dataNode[1], filename, folder, file_data, create_folder)
+            print(error)
 
-        data_node_response = write_file_to_data_node(my_dataNode, filename, folder, file_data, create_folder)
 
         if data_node_response:
             # Archivo escrito exitosamente, ahora agregar a la tabla y al archivo de registro (log)

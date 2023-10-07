@@ -12,6 +12,14 @@
   
     <h3 v-if="showError ==  true" class="error-msg">File not found</h3>
 
+    <div class="container">
+    <button @click="fetchFiles">Listar archivos</button>
+      <ul>
+      <li v-for="file in files" :key="file">{{ file }}</li>
+    </ul>
+
+  </div>
+
   </template>
   
   <script>
@@ -25,12 +33,13 @@
         downloadLink: null,
         downloadFileName: null,
         showError: null,
-        errorMessage: ''
+        errorMessage: '',
+        files: []
       };
     },
     methods: {
       search() {
-        const apiUrl = `http://localhost/readfile`;
+        let apiUrl = `http://localhost/readfile`;
   
         axios.post(apiUrl,{"file":this.searchTerm}, { responseType: 'arraybuffer' })
         .catch((error)=>{
@@ -52,6 +61,14 @@
 
 
       },
+      fetchFiles() {
+        let apiUrl = `http://localhost/listfiles`;
+        axios.get(apiUrl)
+        .then((data)=>{
+          this.files = data.data.files
+          console.log(this.files)
+        })
+      }
     },
   };
   </script>
@@ -65,6 +82,12 @@
 }
     
 .searchbar{
+    display: flex;
+    justify-content: center;
+    
+}
+.container{
+    margin-top: 10px;
     display: flex;
     justify-content: center;
     
