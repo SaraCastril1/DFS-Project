@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## info de la materia: Tópicos especiales en Telemática st0263 
 #
 ## Estudiante(s): 
@@ -147,6 +146,7 @@ Para correr el cliente hay que dirigirse a la carpeta de dfs_client y corres los
 
 
 ## una mini guia de como un usuario utilizaría el software o la aplicación
+Esta desplegado en: http://18.214.11.58:5000/
 ![image](https://github.com/SaraCastril1/DFS-Project/assets/74980999/2a616349-ddf3-411f-9ec1-236bdcd8dd85)
 ![image](https://github.com/SaraCastril1/DFS-Project/assets/74980999/dd950dd7-866e-486b-a4de-4aa414aa80df)
 ![image](https://github.com/SaraCastril1/DFS-Project/assets/74980999/5dc13488-24f1-42d8-88f0-5b994a3e2ae3)
