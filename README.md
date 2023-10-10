@@ -93,9 +93,30 @@ Lenguaje de programacion: Python
 Librerias :Flask , Grpcio y Vue js
 
 ## como se compila y ejecuta.
--Para compilar debes colocar en la consola :hay que ubicarse en la carpeta que quieres ejecutra,le das ```cd .\nameNode\```  luego enter  das enter y despues ingresas ```make NameNode```.
+Todas las dependencias estan en el archivo dfs_env.yml sobre el cual se puede crear un entorno de conda de la siguiente forma:
+```
+conda env create -f dfs_env.yml
+```
+### Para ejectutar el dfs:
 
--Para ejecucion: ```python .\src\nameNode.py```.
+  - Para ejecturar el proyecto hay que correr por separado el namenode, el apigateway y los datanodes.
+    - Para correr el api:
+      - Moverse hastta la carperta api-gateway
+      - Desde esa misma carpeta ejecutar el comando: ```sudo python src/api2.py```
+  - Para correr el NameNode:
+   - Moverse hasta la carpeta namenode
+   - Ejecutar el comando ```python src/namenode.py```
+ - Para correr los datanodes:
+   - Hay 3 datanodes lideres y 3 datanode followers, moverse hasta la carpeta de cada datanode
+   - Ejecutar el comando: ```python src/datanode.py```
+   - **IMPORTANTE:** Si dentro de la carpeta de cada datanode no existe una carpeta files, crearla con el comando: ```mkdir files```
+  
+
+### Para ejecutar el cliente:
+- Moverse hasta la carpeta front_client/dfs_client
+- Ejecutar ```npm i``` (Si es la primera vez que lo corre)
+- Ejecutar ```npm run dev```
+
 
 Se hace lo mismo para el apiGateway y el dataNode , la unica diferencia es que en ves NameNode colocas  apiGateway o el dataNode que usaras ya que son 3.
 
