@@ -17,18 +17,33 @@ Este proyecto, propone un NFS como se describirá más adelante.
 
 Acceda al marco teoríco en el siguiente link -> Informe.pdf
 
+## Que se logró y que no se logro:
+### A Nivel funcional:
+- **Se logró**
+  - El listado de archivos
+  - La busqueda de archivos
+  - La escritura de archivos
+  - La lectura de archivos
+  - Todos lo requisitos funcionales
+- **No se logró**:
+  - Nada
+### A nivel no funcional:
+- **Se logró**
+  - La replicación de los datanodes
+  - La tolerancia a fallos de los datanode, cuando se cae un datanode su follower lo remplaza y se evita la caida del servicio
+- **No se logró**
+  - Que el ciente se comuniqué directamente con el dataNode
+  - replicación y tolerancia a fallos en el nameNode   
+
 ## 2. información general de diseño de alto nivel, arquitectura, patrones, mejores prácticas utilizadas:
 
 ### Componentes:
 
 #### Cliente: 
-El cliente es la interfaz principal a través de la cual los usuarios acceden y administran los archivos en el sistema de archivos distribuidos. Proporcionar una API  de línea de comandos (CLI) para interactuar con el DFS.
+El cliente es la interfaz principal a través de la cual los usuarios acceden y administran los archivos en el sistema de archivos distribuidos. Proporcionar una aplicación web donde se puede realizar todas las operacioes
 
 #### NameNode Leader: 
 Es responsable de llevar un registro de la ubicación de los archivos en el sistema. Su tarea principal es mantener un mapa de qué archivos se almacenan en qué DataNodes y garantizar que haya al menos dos copias de cada archivo para tolerancia a fallos. También debe tomar decisiones sobre la asignación de archivos a DataNodes para la escritura inicial y las réplicas de archivos.
-
-#### NameNode Follower:
-El NameNode seguidor no procesa solicitudes de escritura ni asigna ubicaciones para nuevos bloques de datos. Pero realizar procesos de lectura en caso de ser necesario, pero su función principal es estar sincronizado con el líder y listo para tomar el control en caso de un fallo.
 
 #### DataNodes: 
 Los DataNodes son los nodos de almacenamiento reales donde se ubican los archivos. Cada DataNode es responsable de almacenar y administrar los archivos que se le asignan. Además, un DataNode puede actuar como líder (Leader) o seguidor (Follower) para ciertos archivos para garantizar la tolerancia a fallos y la redundancia. Los DataNodes deben además proporcionar un canal de datos para que los clientes escriban y lean archivos directamente.
