@@ -17,7 +17,7 @@ Este proyecto, propone un NFS como se describirá más adelante.
 
 Acceda al marco teoríco en el siguiente link -> Informe.pdf
 
-## Que se logró y que no se logro:
+## ¿Que se logró y que no se logró?:
 ### A Nivel funcional:
 - **Se logró**
   - El listado de archivos
@@ -26,15 +26,15 @@ Acceda al marco teoríco en el siguiente link -> Informe.pdf
   - La lectura de archivos
   - Todos lo requisitos funcionales
 - **No se logró**:
-  - Nada
+  - A nivel funcional se complieron todos los objetivos.
 ### A nivel no funcional:
 - **Se logró**
   - La replicación de los datanodes
   - La tolerancia a fallos de los datanode, cuando se cae un datanode su follower lo remplaza y se evita la caida del servicio
-  - El particionamiento de los datos mediantebel api haciendo uso del algoritmo roundrobin 
+  - El particionamiento de los datos mediante el apigateway haciendo uso del algoritmo roundrobin 
 - **No se logró**
-  - Que el ciente se comuniqué directamente con el dataNode
-  - replicación y tolerancia a fallos en el nameNode   
+  - Que el ciente se comuniqué directamente con el dataNode a la hora de enviar los datos.
+  - Replicación y tolerancia a fallos en el nameNode.  
 
 ## 2. información general de diseño de alto nivel, arquitectura, patrones, mejores prácticas utilizadas:
 
