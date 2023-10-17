@@ -72,8 +72,8 @@ El canal de datos se utiliza para la transferencia directa de archivos entre el 
 #### Selección de DataNode:
 La selección de DataNode inicial para la escritura y lectura puede ser gestionada por el NameNode utilizando un criterio de optimización, como el enfoque de round-robin para equilibrar la carga.
 
+![diagrama_corregido drawio](https://github.com/SaraCastril1/DFS-Project/assets/67118511/ba6c43b2-e7de-468d-ac14-e319fa926e47)
 
-![Arquitectura_Telemática drawio](https://github.com/SaraCastril1/DFS-Project/assets/84990901/9a5a4612-4fff-43d6-9a8a-0ce022fd8fea)
 
 ### Requisitos Funcionales:
 -Escritura y Lectura de Archivos: El DFS debe permitir a los usuarios escribir y leer archivos de manera eficiente y confiable, tanto localmente como de 		forma distribuida.
