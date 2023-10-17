@@ -31,6 +31,7 @@ Acceda al marco teoríco en el siguiente link -> Informe.pdf
 - **Se logró**
   - La replicación de los datanodes
   - La tolerancia a fallos de los datanode, cuando se cae un datanode su follower lo remplaza y se evita la caida del servicio
+  - El particionamiento de los datos mediantebel api haciendo uso del algoritmo roundrobin 
 - **No se logró**
   - Que el ciente se comuniqué directamente con el dataNode
   - replicación y tolerancia a fallos en el nameNode   
